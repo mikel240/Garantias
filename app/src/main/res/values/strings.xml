@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Garantias</string>
+
+    <!--Dashboard-->
+    <string name="mis_garantias_text">Mis Garantías</string>
+    <string name="add_garantia_text">Añadir Garantía</string>
+    <string name="settings_text">Ajustes</string>
+    <string name="info_text">Información</string>
+</resources>
