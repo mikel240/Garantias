@@ -15,6 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MisGarantiasActivity" />
+        <activity android:name=".fragments.ListadoFragment" />
+        <activity android:name=".fragments.CalendarioFragment" />
+        <activity android:name=".fragments.ProveedoresFragment"></activity>
     </application>
 
 </manifest>

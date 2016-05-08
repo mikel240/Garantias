@@ -37,10 +37,12 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/linearGarantias"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:onClick="onclick"
                     android:orientation="vertical">
 
                     <ImageView
@@ -58,11 +60,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearAddGarantia"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:onClick="onclick">
 
                     <ImageView
                         android:id="@+id/im_add_garantia"
@@ -88,11 +92,13 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/linearSettings"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:onClick="onclick">
 
                     <ImageView
                         android:id="@+id/im_settings"
@@ -109,11 +115,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearInfo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:onClick="onclick">
 
                     <ImageView
                         android:id="@+id/im_info"
