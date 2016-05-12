@@ -6,4 +6,11 @@
     <string name="add_garantia_text">Añadir Garantía</string>
     <string name="settings_text">Ajustes</string>
     <string name="info_text">Información</string>
+
+    <!--Add garantia Activity-->
+    <string name="product_name_form_add">Nombre del producto</string>
+    <string name="local_form_add">Local del compra</string>
+    <string name="fecha_cad_form_add">Expiración de la garantía</string>
+    <string name="btn_form_add">Añadir</string>
+
 </resources>
