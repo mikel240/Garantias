@@ -52,8 +52,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "lugarCompraG TEXT NOT NULL, " +
             "duracionG INTEGER NOT NULL, " +
             "facturaG INTEGER, " +
-            "FOREIGN KEY marcaG REFERENCES marca(idM) ON UPDATE CASCADE ON DELETE SET NULL, " +
-            "FOREIGN KEY facturaG REFERENCES factura(idF) ON UPDATE CASCADE ON DELETE SET NULL";
+            "FOREIGN KEY (marcaG) REFERENCES marca(idM) ON UPDATE CASCADE ON DELETE SET NULL, " +
+            "FOREIGN KEY (facturaG) REFERENCES factura(idF) ON UPDATE CASCADE ON DELETE SET NULL);";
 
     // Patron Singleton para centralizar el acceso a la DB
     private static DataBaseHelper INSTANCE = null;
@@ -83,22 +83,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_MARCA);
         db.execSQL(SQL_CREATE_FACTURA);
         db.execSQL(SQL_CREATE_GARANTIA);
-
-        // Añadir varias marcas a la DB (eliminar más adelante)
-        addMarca("LG", "support@lg.com");
-        addMarca("Philips", "support@philips.com");
-        addMarca("Acer", "support@acer.com");
-        addMarca("Apple", "support@apple.com");
-        addMarca("HP", "support@hp.com");
-        addMarca("Logitech", "support@logitech.com");
-        addMarca("Huawei", "support@huawei.com");
-        addMarca("Hyundai", "support@hyundai.com");
-        addMarca("Sony", "support@sony.com");
-        addMarca("Asus", "support@asus.com");
-        addMarca("Samsung", "support@samsung.com");
-        addMarca("Xiaomi", "support@xiaomi.com");
-        addMarca("bq", "support@bq.com");
-        addMarca("TP-Link", "support@tplink.com");
     }
 
     // Sse invoca cuando la DB necesita ser actualizada/rebajada, mejor DEJAR EN BLANCO hasta futuras versiones
@@ -121,8 +105,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         // Insertar una nueva marca en la tabla (autoincremental id)
         ContentValues cv = new ContentValues();
-        cv.put("quote", nombre);
-        cv.put("author", correo);
+        cv.put("nombreM", nombre);
+        cv.put("correoM", correo);
 
         // Iniciar transaccion, para asegurar la consistencia de los datos
         db.beginTransaction();
