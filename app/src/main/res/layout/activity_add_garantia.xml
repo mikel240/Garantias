@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AddGarantiaActivity">
+    tools:context=".controllers.activities.AddGarantiaActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,24 +18,185 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:orientation="vertical">
+        android:background="@drawable/main_header_selector"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-        <EditText
-            android:id="@+id/product_name"
+        <TextView
+            android:id="@+id/cabecera_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="@string/product_name_form_add"
-            android:inputType="textPersonName" />
+            android:text="@string/cab_form_add"
+            android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/local_compra"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/im_producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_producto" />
+
+            <EditText
+                android:id="@+id/product_tipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/product_tipo_form_add"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/im_marca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_marca" />
+
+            <EditText
+                android:id="@+id/product_marca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/product_marca_form_add"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/im_modelo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_modelo" />
+
+            <EditText
+                android:id="@+id/product_modelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/product_modelo_form_add"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/im_lugar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_lugar" />
+
+            <EditText
+                android:id="@+id/local_compra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/local_form_add"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/im_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="openCalendar"
+                android:src="@drawable/ic_calendar" />
+
+
+            <EditText
+                android:id="@+id/fecha_compra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:focusable="false"
+                android:hint="@string/fecha_compra_form_add"
+                android:onClick="openCalendar" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/local_form_add"
-            android:inputType="textPersonName" />
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/im_duracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_duracion" />
+
+            <TextView
+                android:id="@+id/txt_spnGarantia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="@string/text_dur_garantia_form_add"
+                android:textColor="#80cbc4"
+                android:textSize="18sp" />
+
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spn_dur_garantia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:spinnerMode="dialog">
+
+            </android.support.v7.widget.AppCompatSpinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_siguiente"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/text_siguiente_form_add"
+                android:onClick="openCameraActivity"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/im_siguiente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="openCameraActivity"
+                android:src="@drawable/ic_flecha" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
 
 </RelativeLayout>

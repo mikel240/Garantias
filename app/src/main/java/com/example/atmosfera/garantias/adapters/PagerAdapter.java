@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.atmosfera.garantias.fragments.CalendarioFragment;
-import com.example.atmosfera.garantias.fragments.ListadoFragment;
-import com.example.atmosfera.garantias.fragments.ProveedoresFragment;
+import com.example.atmosfera.garantias.controllers.fragments.CalendarioFragment;
+import com.example.atmosfera.garantias.controllers.fragments.ListadoFragment;
+import com.example.atmosfera.garantias.controllers.fragments.ProveedoresFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int numOfTabs;

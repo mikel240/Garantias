@@ -1,4 +1,4 @@
-package com.example.atmosfera.garantias.activities;
+package com.example.atmosfera.garantias.controllers.activities;
 
 
 import android.support.design.widget.TabLayout;

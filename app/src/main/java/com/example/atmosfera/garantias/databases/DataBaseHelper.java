@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.atmosfera.garantias.pojo.Factura;
-import com.example.atmosfera.garantias.pojo.Garantia;
-import com.example.atmosfera.garantias.pojo.Marca;
+import com.example.atmosfera.garantias.models.Factura;
+import com.example.atmosfera.garantias.models.Garantia;
+import com.example.atmosfera.garantias.models.Marca;
 
 import java.util.ArrayList;
 

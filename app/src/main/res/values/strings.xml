@@ -8,9 +8,35 @@
     <string name="info_text">Información</string>
 
     <!--Add garantia Activity-->
-    <string name="product_name_form_add">Nombre del producto</string>
-    <string name="local_form_add">Local del compra</string>
-    <string name="fecha_cad_form_add">Expiración de la garantía</string>
-    <string name="btn_form_add">Añadir</string>
+    <string name="toolbar_title_form_add">Añadir Garantía</string>
+    <string name="cab_form_add">Rellene el formulario para añadir una nueva
+            garantía a su registro de garantías.</string>
+    <string name="product_tipo_form_add">Tipo de producto</string>
+    <string name="product_marca_form_add">Marca del producto</string>
+    <string name="product_modelo_form_add">Modelo del producto</string>
+    <string name="local_form_add">Lugar de compra</string>
+    <string name="fecha_compra_form_add">Fecha de compra</string>
+    <string name="btn_fecha_form_add">Seleccionar</string>
+    <string name="text_dur_garantia_form_add">Duración de la garantía: </string>
+    <string name="text_siguiente_form_add">Tome una foto de su garantía</string>
+    <string-array name="array_spn_dur_garantia">
+        <item>1 año</item>
+        <item>2 años</item>
+        <item>3 años</item>
+        <item>4 años</item>
+    </string-array>
+
+    <!--camera-->
+    <string name="txt_foto_camera">Tomar Foto</string>
+    <string name="toolbar_title_camera_activity">Añadir Garantía</string>
+
+
+    <!--validación del formulario-->
+    <string name="campo_tipoProducto_vacio">El campo tipo de producto es obligatorio</string>
+    <string name="campo_marca_vacio">El campo marca del producto es obligatorio</string>
+    <string name="campo_modelo_vacio">El campo modelo del producto es obligatorio</string>
+    <string name="campo_lugar_vacio">El campo lugar de compra es obligatorio</string>
+    <string name="campo_fecha_vacio">El campo fecha de compra es obligatorio</string>
+
 
 </resources>

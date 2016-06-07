@@ -1,4 +1,4 @@
-package com.example.atmosfera.garantias.pojo;
+package com.example.atmosfera.garantias.models;
 
 public class Marca {
 

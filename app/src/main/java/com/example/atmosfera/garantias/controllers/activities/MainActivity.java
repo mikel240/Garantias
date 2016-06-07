@@ -1,4 +1,4 @@
-package com.example.atmosfera.garantias.activities;
+package com.example.atmosfera.garantias.controllers.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.atmosfera.garantias.R;
-import com.example.atmosfera.garantias.databases.DataBaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
