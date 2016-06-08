@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Garantias</string>
+    <string name="app_name">Garantiator</string>
 
     <!--Dashboard-->
     <string name="mis_garantias_text">Mis Garantías</string>
@@ -29,6 +29,7 @@
     <!--camera-->
     <string name="txt_foto_camera">Tomar Foto</string>
     <string name="toolbar_title_camera_activity">Añadir Garantía</string>
+    <string name="action_ok">Finalizar</string>
 
 
     <!--validación del formulario-->

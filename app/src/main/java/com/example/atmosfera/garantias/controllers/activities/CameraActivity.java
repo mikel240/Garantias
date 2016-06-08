@@ -6,7 +6,9 @@ import android.graphics.Typeface;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,6 +40,13 @@ public class CameraActivity extends AppCompatActivity {
         imageGarantia = (ImageView) findViewById(R.id.imageGarantia);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.camera_toolbar, menu);
+        return true;
+    }
+
     //back arrow in a toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -45,6 +54,10 @@ public class CameraActivity extends AppCompatActivity {
             //Back arrow
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_ok:
+                //Que se hace al pulsar el tick ("Finalizar")
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

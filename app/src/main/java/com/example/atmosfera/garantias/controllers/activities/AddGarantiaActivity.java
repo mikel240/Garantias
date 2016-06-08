@@ -144,7 +144,7 @@ public class AddGarantiaActivity extends AppCompatActivity {
         if (fecha_compra.getText().toString().equals(""))
             message += "\n" + getResources().getString(R.string.campo_fecha_vacio);
 
-        return "";
+        return message;
     }
 
 }
