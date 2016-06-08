@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set a toolbar to replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Garantiator");
         setSupportActionBar(toolbar);
 
         /*

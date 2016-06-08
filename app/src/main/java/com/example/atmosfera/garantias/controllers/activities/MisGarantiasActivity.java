@@ -22,6 +22,7 @@ public class MisGarantiasActivity extends AppCompatActivity {
 
         // Set a toolbar to replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Mis Garantías");
         setSupportActionBar(toolbar);
 
         //////////////////////TabLayout/////////////////////////
