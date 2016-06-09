@@ -50,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, AddGarantiaActivity.class);
                 break;
             case R.id.linearSettings:
-                //code
+                intent = new Intent(this, SettingsActivity.class);
                 break;
             case R.id.linearInfo:
-                //code
+                intent = new Intent(this, InfoActivity.class);
                 break;
         }
         startActivity(intent);
