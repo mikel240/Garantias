@@ -40,4 +40,16 @@
     <string name="campo_fecha_vacio">El campo fecha de compra es obligatorio</string>
 
 
+    <!--settings-->
+    <string name="toolbar_title_settings">Ajustes</string>
+
+    <!--information-->
+    <string name="toolbar_title_info">Información</string>
+    <string name="designedBy_info">DESIGNED BY</string>
+    <string name="nom1_info">Vasil Slavov Hristov</string>
+    <string name="nom2_info">Manuel Martínez Alonso</string>
+    <string name="nom3_info">Miguel Ángel Real Mañó</string>
+
+
+
 </resources>

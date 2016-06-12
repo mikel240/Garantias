@@ -1,4 +1,3 @@
-package com.example.atmosfera.garantias.test;
 
 import android.content.Intent;
 import android.widget.LinearLayout;

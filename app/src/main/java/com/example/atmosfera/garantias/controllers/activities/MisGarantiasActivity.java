@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.example.atmosfera.garantias.R;
 import com.example.atmosfera.garantias.adapters.PagerAdapter;
@@ -24,6 +25,8 @@ public class MisGarantiasActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Mis Garantías");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //////////////////////TabLayout/////////////////////////
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -42,6 +45,16 @@ public class MisGarantiasActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(onTabSelectedListener(viewPager));
+    }
+    //back arrow in a toolbar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //Back arrow
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private TabLayout.OnTabSelectedListener onTabSelectedListener(final ViewPager pager) {

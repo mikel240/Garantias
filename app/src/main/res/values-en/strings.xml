@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Garantiator</string>
+    <string name="action_ok">Done</string>
+    <string name="add_garantia_text">Add Guarantee</string>
+    <string name="btn_fecha_form_add">Select</string>
+    <string name="cab_form_add">Complete the form to add a new guarantee your guarantee registration</string>
+    <string name="campo_fecha_vacio">The date of purchase field is required</string>
+    <string name="campo_lugar_vacio">The place of purchase field is required</string>
+    <string name="campo_marca_vacio">The brand field is required</string>
+    <string name="campo_modelo_vacio">The model field is required</string>
+    <string name="campo_tipoProducto_vacio">The product type field is required</string>
+    <string name="fecha_compra_form_add">Date of purchase</string>
+    <string name="info_text">Information</string>
+    <string name="local_form_add">Place of purchase</string>
+    <string name="mis_garantias_text">My guarantees</string>
+    <string name="product_marca_form_add">Product brand</string>
+    <string name="product_modelo_form_add">Product Model</string>
+    <string name="product_tipo_form_add">Product type</string>
+    <string name="settings_text">Settings</string>
+    <string name="text_dur_garantia_form_add">Guarantee duration</string>
+    <string name="text_siguiente_form_add">Take a photo of your guarantee</string>
+    <string name="toolbar_title_camera_activity">Add Guarantee</string>
+    <string name="toolbar_title_form_add">Add Guarantee</string>
+    <string name="toolbar_title_settings">Settings</string>
+    <string name="txt_foto_camera">Take a photo</string>
+    <string name="toolbar_title_info">Information</string>
+</resources>
