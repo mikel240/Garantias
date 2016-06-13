@@ -3,12 +3,15 @@ package com.example.atmosfera.garantias.controllers.activities;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,6 +26,7 @@ import android.widget.Toast;
 import com.example.atmosfera.garantias.R;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class AddGarantiaActivity extends AppCompatActivity {
 

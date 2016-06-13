@@ -10,8 +10,81 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#009688"
-        android:minHeight="?attr/actionBarSize">
-    </android.support.v7.widget.Toolbar>
+        android:minHeight="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Switch
+            android:id="@+id/switch_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:checked="true"
+            android:text="@string/notificaciones_settings"
+            android:textSize="20sp" />
+
+        <Switch
+            android:id="@+id/switch_silenciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="10dp"
+            android:checked="false"
+            android:text="@string/silenciar_settings"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/actualizaciones_settings"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/check_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/language_settings"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spn_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:spinnerMode="dialog"
+               >
+
+            </android.support.v7.widget.AppCompatSpinner>
+
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

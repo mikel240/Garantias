@@ -14,16 +14,18 @@ import com.example.atmosfera.garantias.adapters.PagerAdapter;
 public class MisGarantiasActivity extends AppCompatActivity {
 
     private final int numOfPages = 3; //viewpager has 4 pages
-    private final String[] pageTitle = {"Listado", "Calendario", "Proveedores"};
+    private String[] pageTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_garantias);
 
+        pageTitle = getResources().getStringArray(R.array.array_viewpager);
+
         // Set a toolbar to replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Mis Garantías");
+        toolbar.setTitle(getResources().getString(R.string.mis_garantias_text));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -46,6 +48,7 @@ public class MisGarantiasActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(onTabSelectedListener(viewPager));
     }
+
     //back arrow in a toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

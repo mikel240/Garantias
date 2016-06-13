@@ -42,6 +42,14 @@
 
     <!--settings-->
     <string name="toolbar_title_settings">Ajustes</string>
+    <string name="notificaciones_settings">Mostrar notificaciones</string>
+    <string name="silenciar_settings">Silenciar</string>
+    <string name="actualizaciones_settings">Recibir actualizaciones</string>
+    <string name="language_settings">Elegir idioma: </string>
+    <string-array name="spn_language">
+        <item>Español</item>
+        <item>Inglés</item>
+    </string-array>
 
     <!--information-->
     <string name="toolbar_title_info">Información</string>
@@ -50,6 +58,11 @@
     <string name="nom2_info">Manuel Martínez Alonso</string>
     <string name="nom3_info">Miguel Ángel Real Mañó</string>
 
-
+    <!--Mis garantías-->
+    <string-array name="array_viewpager">
+        <item>Listado</item>
+        <item>Calendario</item>
+        <item>Proveedores</item>
+    </string-array>
 
 </resources>
