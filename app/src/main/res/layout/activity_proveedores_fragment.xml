@@ -9,13 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".controllers.fragments.ProveedoresFragment">
 
-    <TextView
-        android:id="@+id/textView"
+    <ListView
+        android:id="@+id/lvProveedores"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="FRAGMENT PROVEEDORES"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50dp" />
+        android:orientation="vertical"></ListView>
+
 
 </RelativeLayout>

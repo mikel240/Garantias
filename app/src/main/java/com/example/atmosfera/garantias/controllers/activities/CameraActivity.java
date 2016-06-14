@@ -3,22 +3,45 @@ package com.example.atmosfera.garantias.controllers.activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.atmosfera.garantias.R;
+import com.example.atmosfera.garantias.controllers.fragments.ListadoFragment;
+import com.example.atmosfera.garantias.databases.DataBaseHelper;
+import com.example.atmosfera.garantias.models.Marca;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class CameraActivity extends AppCompatActivity {
 
     ImageView imageGarantia;
+    Bitmap bm;
+    private final String FOLDER_NAME = "garantiator";
+    private String productTipo;
+    private String productMarca;
+    private String productModelo;
+    private String localCompra;
+    private String fechaCompra;
+    private int duracionGarantia;
+    private long marca;
+    private long factura;
+    private String photoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +80,11 @@ public class CameraActivity extends AppCompatActivity {
                 break;
             case R.id.action_ok:
                 //Que se hace al pulsar el tick ("Finalizar")
+                crearGarantia();
+
+                Intent i = new Intent(CameraActivity.this, MisGarantiasActivity.class);
+                startActivity(i);
+
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -78,6 +106,67 @@ public class CameraActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap mybit = (Bitmap) extras.get("data");
             imageGarantia.setImageBitmap(mybit);
+            imageGarantia.buildDrawingCache();
+            bm = imageGarantia.getDrawingCache();
         }
     }
+
+    private void crearGarantia() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            productTipo = extras.getString("productTipo");
+            productMarca = extras.getString("productMarca");
+            productModelo = extras.getString("productModelo");
+            localCompra = extras.getString("localCompra");
+            fechaCompra = extras.getString("fechaCompra");
+            duracionGarantia = extras.getInt("duracionGarantia", 1);
+        }
+
+
+        ArrayList<Marca> listaMarcas = DataBaseHelper.getInstance(this).getMarcas();
+
+        marca = -1;
+
+        for (Marca m : listaMarcas) {
+            if (m.getNombreM().equalsIgnoreCase(productMarca)) {
+                marca = m.getIdM();
+                return;
+            }
+        }
+
+        if (marca == -1) {
+            String mail = "support@".concat(productMarca.toLowerCase()).concat(".com");
+            marca = DataBaseHelper.getInstance(this).addMarca(productMarca, mail);
+        }
+
+        photoPath = "";
+        try {
+            saveImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        factura = DataBaseHelper.getInstance(this).addFactura(photoPath, "JPEG");
+
+        DataBaseHelper.getInstance(this).addGarantia(productTipo, marca, productModelo,
+                fechaCompra, localCompra, duracionGarantia, factura);
+
+    }
+
+
+    private void saveImage() throws Exception {
+        OutputStream fOut = null;
+
+        File root = new File(Environment.getExternalStorageDirectory() + File.separator + FOLDER_NAME + File.separator);
+        root.mkdirs();
+        String temp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File sdImageMainDirectory = new File(root, "garantiator_" + temp + ".jpg");
+        photoPath = Uri.fromFile(sdImageMainDirectory).toString();
+        fOut = new FileOutputStream(sdImageMainDirectory);
+
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+        fOut.flush();
+        fOut.close();
+    }
+
 }

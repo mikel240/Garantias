@@ -37,6 +37,12 @@ public class AddGarantiaActivity extends AppCompatActivity {
     private int mMonth;
     private int mDay;
     static final int DATEPICKER_COMPRA_ID = 0;
+    private String productTipo;
+    private String productMarca;
+    private String productModelo;
+    private String localCompra;
+    private String fechaCompra;
+    private int duracionGarantia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +91,13 @@ public class AddGarantiaActivity extends AppCompatActivity {
     }
 
     public void updateDisplay() {
+        String auxDay = (mDay < 10) ? "0" + mDay : "" + mDay;
+        String auxMonth = (mMonth < 9) ? "0" + (mMonth + 1) : "" + (mMonth + 1);
+
         this.displayFechaCompra.setText(new StringBuilder()
                 // Month is 0 based so add 1
-                .append(mDay).append("/")
-                .append(mMonth + 1).append("/")
+                .append(auxDay).append("/")
+                .append(auxMonth).append("/")
                 .append(mYear).append(" "));
     }
 
@@ -121,31 +130,39 @@ public class AddGarantiaActivity extends AppCompatActivity {
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         } else {
             Intent intent = new Intent(this, CameraActivity.class);
+            intent.putExtra("productTipo", productTipo)
+                    .putExtra("productMarca", productMarca)
+                    .putExtra("productModelo", productModelo)
+                    .putExtra("localCompra", localCompra)
+                    .putExtra("fechaCompra", fechaCompra)
+                    .putExtra("duracionGarantia", duracionGarantia);
             startActivity(intent);
         }
     }
 
     public String checkFields() {
         String message = "";
-        EditText product_tipo = (EditText) findViewById(R.id.product_tipo);
-        EditText product_marca = (EditText) findViewById(R.id.product_marca);
-        EditText product_modelo = (EditText) findViewById(R.id.product_modelo);
-        EditText local_compra = (EditText) findViewById(R.id.local_compra);
-        EditText fecha_compra = (EditText) findViewById(R.id.fecha_compra);
 
-        if (product_tipo.getText().toString().equals(""))
+        productTipo = ((EditText) findViewById(R.id.product_tipo)).getText().toString();
+        productMarca = ((EditText) findViewById(R.id.product_marca)).getText().toString();
+        productModelo = ((EditText) findViewById(R.id.product_modelo)).getText().toString();
+        localCompra = ((EditText) findViewById(R.id.local_compra)).getText().toString();
+        fechaCompra = ((EditText) findViewById(R.id.fecha_compra)).getText().toString();
+        duracionGarantia = Integer.valueOf(((Spinner) findViewById(R.id.spn_dur_garantia)).getSelectedItem().toString().substring(0, 1));
+
+        if (productTipo.equals(""))
             message = getResources().getString(R.string.campo_tipoProducto_vacio);
 
-        if (product_marca.getText().toString().equals(""))
+        if (productMarca.equals(""))
             message += "\n" + getResources().getString(R.string.campo_marca_vacio);
 
-        if (product_modelo.getText().toString().equals(""))
+        if (productModelo.equals(""))
             message += "\n" + getResources().getString(R.string.campo_modelo_vacio);
 
-        if (local_compra.getText().toString().equals(""))
+        if (localCompra.equals(""))
             message += "\n" + getResources().getString(R.string.campo_lugar_vacio);
 
-        if (fecha_compra.getText().toString().equals(""))
+        if (fechaCompra.equals(""))
             message += "\n" + getResources().getString(R.string.campo_fecha_vacio);
 
         return message;

@@ -127,6 +127,78 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    // Insertar una nueva factura/fotografia en la DB y devolver su ID
+    public long addFactura(String ruta, String formato) {
+
+        long res = -1;
+
+        // Obtener acceso a la DB en modo de escritura (vamos a hacer modificaciones en la DB)
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Insertar una nueva factura/fotografia en la tabla (autoincremental id)
+        ContentValues cv = new ContentValues();
+        cv.put("rutaArchivoF", ruta);
+        cv.put("formatoArchivoF", formato);
+
+        // Iniciar transaccion, para asegurar la consistencia de los datos
+        db.beginTransaction();
+        try {
+            // Realizar acciones
+            res = db.insert(TABLE_FACTURA, null, cv);
+
+            // Confirmar transaccion, hacer las modificaiones efectivas
+            db.setTransactionSuccessful();
+        } catch (SQLiteException sqlex) {
+            Log.e(DEBUG_TAG, sqlex.getMessage());
+        } finally {
+            // Cerrar transaccion y objeto DB
+            db.endTransaction();
+            db.close();
+        }
+
+        return res;
+    }
+
+    // Insertar una nueva garantia en la DB y devolver su ID
+    public long addGarantia(String tipoProductoG, long marcaG, String modeloG,
+                            String fechaCompraG, String lugarCompraG, int duracionG, long facturaG) {
+
+        long res = -1;
+
+        // Obtener acceso a la DB en modo de escritura (vamos a hacer modificaciones en la DB)
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Insertar una nueva garantia en la tabla (autoincremental id)
+        ContentValues cv = new ContentValues();
+        cv.put("tipoProductoG", tipoProductoG);
+        cv.put("marcaG", marcaG);
+        cv.put("modeloG", modeloG);
+        cv.put("numeroSerieG", "");
+        cv.put("detallesG", "");
+        cv.put("fechaCompraG", fechaCompraG);
+        cv.put("lugarCompraG", lugarCompraG);
+        cv.put("duracionG", duracionG);
+        cv.put("facturaG", facturaG);
+
+        // Iniciar transaccion, para asegurar la consistencia de los datos
+        db.beginTransaction();
+        try {
+            // Realizar acciones
+            res = db.insert(TABLE_GARANTIA, null, cv);
+
+            // Confirmar transaccion, hacer las modificaiones efectivas
+            db.setTransactionSuccessful();
+        } catch (SQLiteException sqlex) {
+            Log.e(DEBUG_TAG, sqlex.getMessage());
+        } finally {
+            // Cerrar transaccion y objeto DB
+            db.endTransaction();
+            db.close();
+        }
+
+        return res;
+    }
+
     // Eliminar todas las marcas de la DB y devolver el numero de entradas eliminadas
     public int clearAllMarcas() {
 
@@ -172,7 +244,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Consultar tabla para obtener los datos de todas las entradas existentes
         String query = "SELECT * " +
                 "FROM garantia G, marca M, factura F " +
-                "WHRE G.marcaG=M.idM AND G.facturaG=F.idF " +
+                "WHERE G.marcaG=M.idM AND G.facturaG=F.idF " +
                 "ORDER BY G.idG DESC;";
 
         Cursor c = db.rawQuery(query, null);
@@ -271,6 +343,43 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return g;
+    }
+
+    // Obtener todas las marcas
+    public ArrayList<Marca> getMarcas() {
+
+        ArrayList<Marca> res = new ArrayList<>();
+        Marca itemM;
+
+        // Obtener acceso a la DB en modo de lectura (NO vamos a hacer modificaciones en la DB)
+        SQLiteDatabase db = getReadableDatabase();
+
+        // Consultar tabla para obtener los datos de todas las entradas existentes
+        String query = "SELECT * " +
+                "FROM marca M;" +
+                "ORDER BY M.nombreM ASC;";
+
+        Cursor c = db.rawQuery(query, null);
+
+        // Recorrer los resultados
+        while (c.moveToNext()) {
+
+            // Crear un objeto para la entrada de la DB
+            itemM = new Marca();
+
+            itemM.setIdM(c.getInt(c.getColumnIndex("idM")));
+            itemM.setNombreM(c.getString(c.getColumnIndex("nombreM")));
+            itemM.setCorreoM(c.getString(c.getColumnIndex("correoM")));
+
+            // Agregar el objeto garantia a la lista de resultados
+            res.add(itemM);
+        }
+
+        // Cerrar el cursor y el objeto DB
+        c.close();
+        db.close();
+
+        return res;
     }
 
 }
